@@ -7,8 +7,8 @@ import json
 
 from .models import Reply
 
-WEBHOOK_URL = 'YOUR_WEBHOOK_URL'
-VERIFICATION_TOKEN = 'YOUR_VERIFICATION_TOKEN'
+WEBHOOK_URL = 'https://hooks.slack.com/services/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'
+VERIFICATION_TOKEN = 'Wu45KWZMrrVjNz8FZ9xp6Qqx'
 ACTION_HOW_ARE_YOU = 'HOW_ARE_YOU'
 
 def index(request):
