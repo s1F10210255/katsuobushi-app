@@ -4,7 +4,7 @@ from django.core.exceptions import SuspiciousOperation
 from django.views.decorators.csrf import csrf_exempt
 import urllib
 import json
-
+import random
 from .models import Reply
 
 WEBHOOK_URL = 'https://hooks.slack.com/services/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'
@@ -166,5 +166,14 @@ def post_message(url, data):
         body = res.read()
 
 @csrf_exempt
-def omikuji_katsuobushi(message):
-    message.reply(random.choice(['大吉', '吉', '中吉', '小吉', '末吉', '凶', '大凶']))
+def charm(request):
+    if request.method != 'POST':
+        return JsonResponse({})
+    
+    if request.POST.get('token') != VERIFICATION_TOKEN:
+        raise SuspiciousOperation('Invalid request.')
+    
+    result =Reply(random.choice(['大吉', '吉', '中吉', '小吉', '末吉', '凶', '大凶']),response=Reply.POSITIVE)
+    return JsonResponse(result)
+
+    
