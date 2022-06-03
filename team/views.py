@@ -164,3 +164,7 @@ def post_message(url, data):
     req = urllib.request.Request(url, json.dumps(data).encode(), headers)
     with urllib.request.urlopen(req) as res:
         body = res.read()
+
+@csrf_exempt
+def omikuji_katsuobushi(message):
+    message.reply(random.choice(['大吉', '吉', '中吉', '小吉', '末吉', '凶', '大凶']))
