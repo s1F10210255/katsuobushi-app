@@ -194,7 +194,7 @@ def katsuobushi(request):
     content = request.POST['text']
     l = ["そうめん","いなご"]
     result = {
-        'text': '<@{}> 晩御飯はこれ！'.format(user_id),
+        'text': '<@{}> 晩御飯はこれ！{}'.format(user_id, content.upper()),
         'response_type': 'in_channel'
     }
 
