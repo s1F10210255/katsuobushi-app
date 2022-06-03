@@ -165,6 +165,7 @@ def post_message(url, data):
     with urllib.request.urlopen(req) as res:
         body = res.read()
 
+<<<<<<< HEAD
 @csrf_exempt
 def charm(request):
     if request.method != 'POST':
@@ -177,3 +178,6 @@ def charm(request):
     return JsonResponse(result)
 
     
+=======
+def katsuobushi(request):
+>>>>>>> dd2f307c6324e66f6112184ed2ee714afacf801e
