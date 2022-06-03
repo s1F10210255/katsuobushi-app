@@ -26,9 +26,7 @@ urlpatterns = [
     path('api/echo', team_views.echo, name='api_echo'),
     path('api/hello', team_views.hello, name='api_hello'),
     path('api/reply', team_views.reply, name='api_reply'),
-<<<<<<< HEAD
     path('api/charm',team_views.charm, name='api_charm'),
-=======
-    path('api/katsuobushi', team_views.katsuobushi, name='api_katsuobushi')
->>>>>>> dd2f307c6324e66f6112184ed2ee714afacf801e
+
 ]
+
