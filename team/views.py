@@ -194,7 +194,7 @@ def katsuobushi(request):
     content = request.POST['text']
     l = ["そうめん","いなご"]
     result = {
-        'text': '<@{}> {}'.format('晩御飯はこれ！',random.choice(l)),
+        'text': '<@{}>晩御飯はこれ！ {}'.format(user_id, random.choice(l)),
         'response_type': 'in_channel'
     }
 
