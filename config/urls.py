@@ -19,7 +19,7 @@ from team import views as team_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('team',include('team.uels')),
+    path('team',include('team.urls')),
     path('', team_views.index, name='index'),
     path('announce', team_views.announce, name='announce'),
     path('clear', team_views.clear, name='clear'),
