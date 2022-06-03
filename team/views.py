@@ -164,3 +164,5 @@ def post_message(url, data):
     req = urllib.request.Request(url, json.dumps(data).encode(), headers)
     with urllib.request.urlopen(req) as res:
         body = res.read()
+
+def katsuobushi(request):
