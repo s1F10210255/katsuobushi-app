@@ -184,6 +184,3 @@ def charm(request):
     }
 
     return JsonResponse(result)
-
-
-
