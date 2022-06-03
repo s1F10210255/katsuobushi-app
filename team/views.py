@@ -139,19 +139,19 @@ def reply(request):
         reply = Reply(user_name=user['name'], user_id=user['id'], response=Reply.POSITIVE)
         reply.save()
         response = {
-            'text': '<@{}> Great! :smile:'.format(user['id'])
+            'text': '<@{}> ハンバーグ！ :smile:'.format(user['id'])
         }
     elif selected_value == 'neutral':
         reply = Reply(user_name=user['name'], user_id=user['id'], response=Reply.NEUTRAL)
         reply.save()
         response = {
-            'text': '<@{}> Ok, thank you! :sweat_smile:'.format(user['id'])
+            'text': '<@{}> 寿司！ :smile:'.format(user['id'])
         }
     else:
         reply = Reply(user_name=user['name'], user_id=user['id'], response=Reply.NEGATIVE)
         reply.save()
         response = {
-            'text': '<@{}> Good luck! :innocent:'.format(user['id'])
+            'text': '<@{}> 麻婆豆腐！ :smile:'.format(user['id'])
         }
     
     post_message(response_url, response)
@@ -192,9 +192,51 @@ def katsuobushi(request):
     user_name = request.POST['user_name']
     user_id = request.POST['user_id']
     content = request.POST['text']
-    l = ["そうめん","いなご"]
     result = {
-        'text': '<@{}> 晩御飯はこれ！{}'.format(user_id, content.upper()),
+        'blocks': [
+            {
+                'type' : 'section',
+                'text' : {
+                    'type': 'mrkdwn',
+                    'text': '<@{}> How are you?'.format(user_id)
+                },
+                'accessory': {
+                    'type': 'static_select',
+                    'placeholder': {
+                        'type': 'plain_text',
+                        'text': '気分は？:',
+                        'emoji': True
+                    },
+                    'options': [
+                        {
+                            'text': {
+                                'type': 'plain_text',
+                                'text': '洋食',
+                                'emoji': True
+                            },
+                            'value': 'positive'
+                        },
+                        {
+                            'text': {
+                                'type': 'plain_text',
+                                'text': '和食',
+                                'emoji': True
+                            },
+                            'value': 'neutral'
+                        },
+                        {
+                            'text': {
+                                'type': 'plain_text',
+                                'text': '中華',
+                                'emoji': True
+                            },
+                            'value': 'negative'
+                        }
+                    ],
+                    'action_id': ACTION_HOW_ARE_YOU
+                }
+            }
+        ],
         'response_type': 'in_channel'
     }
 
