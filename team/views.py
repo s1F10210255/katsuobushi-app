@@ -176,4 +176,20 @@ def charm(request):
     result =Reply(random.choice(['大吉', '吉', '中吉', '小吉', '末吉', '凶', '大凶']),response=Reply.POSITIVE)
     return JsonResponse(result)
 
+@csrf_exempt
 def katsuobushi(request):
+    if request.method != 'POST':
+        return JsonResponse({})
+    
+    if request.POST.get('token') != VERIFICATION_TOKEN:
+        raise SuspiciousOperation('Invalid request.')
+    
+    user_name = request.POST['user_name']
+    user_id = request.POST['user_id']
+    content = request.POST['text']
+    result = {
+        'text': '<@{}> {}'.format('晩御飯はこれ！'),
+        'response_type': 'in_channel'
+    }
+
+    return JsonResponse(result)
