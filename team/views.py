@@ -231,5 +231,4 @@ def katsuobushi(request):
 
 @csrf_exempt
 def charm(request):
-    result =Reply(random.choice(['大吉', '吉', '中吉', '小吉', '末吉', '凶', '大凶']),response=Reply.POSITIVE)
-    return JsonResponse(result)
+    return Reply(random.choice(['大吉', '吉', '中吉', '小吉', '末吉', '凶', '大凶']),response=Reply.POSITIVE)
