@@ -167,7 +167,7 @@ def post_message(url, data):
         body = res.read()
 
 def dinner(request):
-    l=['寿司','天ぷら','麻婆豆腐','ラーメン','唐揚げ','レバニラ炒め','メンチカツ','ビーフシチュー','カレー','手羽先','鍋','豚バラ大根','青椒肉絲','そば','うどん','野菜炒め','豚キムチ','かつ丼','生姜焼き','エビチリ','焼き魚','焼きおにぎり']
+    l=['寿司','天ぷら','麻婆豆腐','ラーメン','唐揚げ','レバニラ炒め','メンチカツ','ビーフシチュー','カレー','手羽先','鍋','豚バラ大根','青椒肉絲','そば','うどん','野菜炒め','豚キムチ','かつ丼','生姜焼き','エビチリ','焼き魚','焼きおにぎり','ハンバーグ']
     if request.method != 'POST':
         return JsonResponse({})
     
@@ -179,7 +179,7 @@ def dinner(request):
     content = request.POST['text']
 
     result = {
-        'text': '<@{}> {}'.format(user_id, print(random.choice(l))),
+        'text': '<@{}> {}'.format(user_id, print('今日のごはんは',random.choice(l))),
         'response_type': 'in_channel'
     }
 
