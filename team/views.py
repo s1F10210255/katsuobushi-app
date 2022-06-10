@@ -77,7 +77,7 @@ def hello(request):
                 'type' : 'section',
                 'text' : {
                     'type': 'mrkdwn',
-                    'text': '<@{}> What is the best menu for tonight?'.format(user_id)
+                    'text': '<@{}> 今日の気分は?'.format(user_id)
                 },
                 'accessory': {
                     'type': 'static_select',
@@ -188,7 +188,7 @@ def katsuobushi(request):
                 'type' : 'section',
                 'text' : {
                     'type': 'mrkdwn',
-                    'text': '<@{}> How are you?'.format(user_id)
+                    'text': '<@{}> What is the best menu for tonight?'.format(user_id)
                 },
                 'accessory': {
                     'type': 'static_select',
@@ -201,7 +201,7 @@ def katsuobushi(request):
                         {
                             'text': {
                                 'type': 'plain_text',
-                                'text': '洋食',
+                                'text': '洋食?',
                                 'emoji': True
                             },
                             'value': 'positive'
@@ -209,7 +209,7 @@ def katsuobushi(request):
                         {
                             'text': {
                                 'type': 'plain_text',
-                                'text': '和食',
+                                'text': '和食?',
                                 'emoji': True
                             },
                             'value': 'neutral'
@@ -217,7 +217,7 @@ def katsuobushi(request):
                         {
                             'text': {
                                 'type': 'plain_text',
-                                'text': '中華',
+                                'text': '中華?',
                                 'emoji': True
                             },
                             'value': 'negative'
