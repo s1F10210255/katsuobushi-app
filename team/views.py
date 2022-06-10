@@ -5,7 +5,6 @@ from django.views.decorators.csrf import csrf_exempt
 import urllib
 import json
 import random
-
 from .models import Reply
 
 WEBHOOK_URL = 'https://hooks.slack.com/services/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'
@@ -140,19 +139,19 @@ def reply(request):
         reply = Reply(user_name=user['name'], user_id=user['id'], response=Reply.POSITIVE)
         reply.save()
         response = {
-            'text': '<@{}> Great! :smile:'.format(user['id'])
+            'text': '<@{}> ハンバーグ！ :smile:'.format(user['id'])
         }
     elif selected_value == 'neutral':
         reply = Reply(user_name=user['name'], user_id=user['id'], response=Reply.NEUTRAL)
         reply.save()
         response = {
-            'text': '<@{}> Ok, thank you! :sweat_smile:'.format(user['id'])
+            'text': '<@{}> 寿司！ :smile:'.format(user['id'])
         }
     else:
         reply = Reply(user_name=user['name'], user_id=user['id'], response=Reply.NEGATIVE)
         reply.save()
         response = {
-            'text': '<@{}> Good luck! :innocent:'.format(user['id'])
+            'text': '<@{}> 麻婆豆腐！ :smile:'.format(user['id'])
         }
     
     post_message(response_url, response)
@@ -166,8 +165,11 @@ def post_message(url, data):
     with urllib.request.urlopen(req) as res:
         body = res.read()
 
-def dinner(request):
-    l=['寿司','天ぷら','麻婆豆腐','ラーメン','唐揚げ','レバニラ炒め','メンチカツ','ビーフシチュー','カレー','手羽先','鍋','豚バラ大根','青椒肉絲','そば','うどん','野菜炒め','豚キムチ','かつ丼','生姜焼き','エビチリ','焼き魚','焼きおにぎり']
+
+
+
+@csrf_exempt
+def katsuobushi(request):
     if request.method != 'POST':
         return JsonResponse({})
     
@@ -177,18 +179,57 @@ def dinner(request):
     user_name = request.POST['user_name']
     user_id = request.POST['user_id']
     content = request.POST['text']
-
     result = {
-        'text': '<@{}> {}'.format(user_id, print(random.choice(l))),
+        'blocks': [
+            {
+                'type' : 'section',
+                'text' : {
+                    'type': 'mrkdwn',
+                    'text': '<@{}> How are you?'.format(user_id)
+                },
+                'accessory': {
+                    'type': 'static_select',
+                    'placeholder': {
+                        'type': 'plain_text',
+                        'text': '気分は？:',
+                        'emoji': True
+                    },
+                    'options': [
+                        {
+                            'text': {
+                                'type': 'plain_text',
+                                'text': '洋食',
+                                'emoji': True
+                            },
+                            'value': 'positive'
+                        },
+                        {
+                            'text': {
+                                'type': 'plain_text',
+                                'text': '和食',
+                                'emoji': True
+                            },
+                            'value': 'neutral'
+                        },
+                        {
+                            'text': {
+                                'type': 'plain_text',
+                                'text': '中華',
+                                'emoji': True
+                            },
+                            'value': 'negative'
+                        }
+                    ],
+                    'action_id': ACTION_HOW_ARE_YOU
+                }
+            }
+        ],
         'response_type': 'in_channel'
     }
 
     return JsonResponse(result)
-    
 
-
-
-    
-
-    
-
+@csrf_exempt
+def charm(request):
+    result =Reply(random.choice(['大吉', '吉', '中吉', '小吉', '末吉', '凶', '大凶']),response=Reply.POSITIVE)
+    return result
