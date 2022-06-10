@@ -77,7 +77,7 @@ def hello(request):
                 'type' : 'section',
                 'text' : {
                     'type': 'mrkdwn',
-                    'text': '<@{}> How are you?'.format(user_id)
+                    'text': '<@{}> What is the best menu for tonight?'.format(user_id)
                 },
                 'accessory': {
                     'type': 'static_select',
