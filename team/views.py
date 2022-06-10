@@ -142,19 +142,19 @@ def reply(request):
         reply = Reply(user_name=user['name'], user_id=user['id'], response=Reply.POSITIVE)
         reply.save()
         response = {
-            'text': '<@{}> ハンバーグ！ :smile:'.format(user['id'])
+            'text': '<@{}> シチュー！ :stew:'.format(user['id'])
         }
     elif selected_value == 'neutral':
         reply = Reply(user_name=user['name'], user_id=user['id'], response=Reply.NEUTRAL)
         reply.save()
         response = {
-            'text': '<@{}> 寿司！ :smile:'.format(user['id'])
+            'text': '<@{}> 寿司！ :sushi:'.format(user['id'])
         }
     else:
         reply = Reply(user_name=user['name'], user_id=user['id'], response=Reply.NEGATIVE)
         reply.save()
         response = {
-            'text': '<@{}> 麻婆豆腐！ :smile:'.format(user['id'])
+            'text': '<@{}> 餃子！ :dumpling:'.format(user['id'])
         }
     
     post_message(response_url, response)
