@@ -4,8 +4,11 @@ from django.core.exceptions import SuspiciousOperation
 from django.views.decorators.csrf import csrf_exempt
 import urllib
 import json
-import random
+
 from .models import Reply
+
+import random
+
 
 WEBHOOK_URL = 'https://hooks.slack.com/services/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'
 VERIFICATION_TOKEN = 'Wu45KWZMrrVjNz8FZ9xp6Qqx'
@@ -119,7 +122,7 @@ def hello(request):
     return JsonResponse(result)
 
 @csrf_exempt
-def reply(request):
+def katsuobushi(request):
     if request.method != 'POST':
         return JsonResponse({})
     
@@ -169,7 +172,7 @@ def post_message(url, data):
 
 
 @csrf_exempt
-def katsuobushi(request):
+def reply(request):
     if request.method != 'POST':
         return JsonResponse({})
     
