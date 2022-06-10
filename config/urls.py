@@ -25,7 +25,7 @@ urlpatterns = [
     path('api/hello', team_views.hello, name='api_hello'),
     path('api/reply', team_views.reply, name='api_reply'),
     path('api/katsuobushi',team_views.katsuobushi, name='api_katsuobushi'),
-    #path('api/dinner',team_views.dinner, name='api_dinner'),
+
 
 
 ]

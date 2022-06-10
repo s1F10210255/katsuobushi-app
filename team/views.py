@@ -122,7 +122,7 @@ def hello(request):
     return JsonResponse(result)
 
 @csrf_exempt
-def katsuobushi(request):
+def reply(request):
     if request.method != 'POST':
         return JsonResponse({})
     
@@ -172,7 +172,7 @@ def post_message(url, data):
 
 
 @csrf_exempt
-def reply(request):
+def katsuobushi(request):
     if request.method != 'POST':
         return JsonResponse({})
     
