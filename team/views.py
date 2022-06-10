@@ -171,7 +171,7 @@ def post_message(url, data):
 
 
 
-
+@csrf_exempt
 def katsuobushi(request):
     if request.method != 'POST':
         return JsonResponse({})
